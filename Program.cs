@@ -84,12 +84,15 @@ namespace ToDo
             try
             {
                 Console.WriteLine("Ingrese el nombre de la tarea: ");
+
                 string task = Console.ReadLine();
                 Tasklist.Add(task);
+                if(task.Length<1) Console.WriteLine("debe ingresar al menos un caracter para añadir task");
                 Console.WriteLine("Tarea registrada");
             }
             catch (Exception)
             {
+                Console.WriteLine("hubo un error al ingresar la tarea");
             }
         }
 
