@@ -42,8 +42,8 @@ namespace ToDo
             Console.WriteLine("4. Salir");
 
             // Read line
-            string line = Console.ReadLine();
-            return Convert.ToInt32(line);
+            string Readline = Console.ReadLine();
+            return Convert.ToInt32(Readline);
         }
 
         public static void ShowMenuRemove()
