@@ -56,16 +56,26 @@ namespace ToDo
                 string line = Console.ReadLine();
                 // Remove one position
                 int indexToRemove = Convert.ToInt32(line) - 1;
-                    if (indexToRemove > -1 &&Tasklist.Count > 0)
+
+                if (indexToRemove > (Tasklist.Count - 1) || indexToRemove < 0)
+                {
+                    Console.WriteLine("Numero de tarea seleccionado no es valido");
+                }
+                else
+                {
+                    if (indexToRemove > -1 && Tasklist.Count > 0)
                     {
                         string task = Tasklist[indexToRemove];
                         Tasklist.RemoveAt(indexToRemove);
                         Console.WriteLine("Tarea " + task + " eliminada");
                     }
-                
+
+                }
+
             }
             catch (Exception)
             {
+                Console.WriteLine("Ha ocurrido un error al eliminar la tarea");
             }
         }
 
@@ -93,13 +103,14 @@ namespace ToDo
             {
                 Console.WriteLine("----------------------------------------");
                 var indexTask = 1;
-                Tasklist.ForEach(p=> Console.WriteLine(indexTask++ + ". " + p));
+                Tasklist.ForEach(p => Console.WriteLine(indexTask++ + ". " + p));
                 Console.WriteLine("----------------------------------------");
-            } 
+            }
         }
     }
 
-    public enum Menu {
+    public enum Menu
+    {
         Add = 1,
         Remove = 2,
         List = 3,
