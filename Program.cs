@@ -50,13 +50,8 @@ namespace ToDo
         {
             try
             {
-                Console.WriteLine("Ingrese el número de la tarea a remover: ");
-                // Show current taks
-                for (int i = 0; i < Tasklist.Count; i++)
-                {
-                    Console.WriteLine((i + 1) + ". " + Tasklist[i]);
-                }
-                Console.WriteLine("----------------------------------------");
+                //show current task
+                ShowMenuTaskList();
 
                 string line = Console.ReadLine();
                 // Remove one position
@@ -104,7 +99,7 @@ namespace ToDo
                     Console.WriteLine((i + 1) + ". " + Tasklist[i]);
                 }
                 Console.WriteLine("----------------------------------------");
-            }
+            } 
         }
     }
 
