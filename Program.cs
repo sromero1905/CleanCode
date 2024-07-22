@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿
 
-namespace ToDo
-{
-    internal class Program
-    {
-        public static List<string> Tasklist { get; set; }
+    
+       List<string> Tasklist  =  new List<string>();
 
-        static void Main(string[] args)
-        {
-            Tasklist = new List<string>();
+           
             int menuSelected = 0;
             do
             {
@@ -27,12 +21,12 @@ namespace ToDo
                     ShowMenuTaskList();
                 }
             } while ((Menu)menuSelected != Menu.Exit);
-        }
+        
         /// <summary>
         /// Show the main menu 
         /// </summary>
         /// <returns>Returns option indicated by user</returns>
-        public static int ShowMainMenu()
+         int ShowMainMenu()
         {
             Console.WriteLine("----------------------------------------");
             Console.WriteLine("Ingrese la opción a realizar: ");
@@ -46,7 +40,7 @@ namespace ToDo
             return Convert.ToInt32(Readline);
         }
 
-        public static void ShowMenuRemove()
+         void ShowMenuRemove()
         {
             try
             {
@@ -67,7 +61,7 @@ namespace ToDo
                     {
                         string task = Tasklist[indexToRemove];
                         Tasklist.RemoveAt(indexToRemove);
-                        Console.WriteLine("Tarea " + task + " eliminada");
+                        Console.WriteLine($"la tarea {task} a sido eliminada");
                     }
 
                 }
@@ -79,7 +73,7 @@ namespace ToDo
             }
         }
 
-        public static void ShowMenuAdd()
+         void ShowMenuAdd()
         {
             try
             {
@@ -96,21 +90,22 @@ namespace ToDo
             }
         }
 
-        public static void ShowMenuTaskList()
+         void ShowMenuTaskList()
         {
-            if (Tasklist == null || Tasklist.Count == 0)
+            if (Tasklist?.Count>0)
             {
-                Console.WriteLine("No hay tareas por realizar");
+                 Console.WriteLine("----------------------------------------");
+                var indexTask = 1;
+                Tasklist.ForEach(p => Console.WriteLine($"{indexTask++}  .  {p}"));
+                Console.WriteLine("----------------------------------------");
+                
             }
             else
             {
-                Console.WriteLine("----------------------------------------");
-                var indexTask = 1;
-                Tasklist.ForEach(p => Console.WriteLine(indexTask++ + ". " + p));
-                Console.WriteLine("----------------------------------------");
+               Console.WriteLine("No hay tareas por realizar");
             }
         }
-    }
+    
 
     public enum Menu
     {
@@ -119,4 +114,3 @@ namespace ToDo
         List = 3,
         Exit = 4
     }
-}
