@@ -1,7 +1,4 @@
-﻿
-
-    
-       List<string> Tasklist  =  new List<string>();
+﻿List<string> Tasklist  =  new List<string>();
 
            
             int menuSelected = 0;
@@ -23,9 +20,9 @@
             } while ((Menu)menuSelected != Menu.Exit);
         
         /// <summary>
-        /// Show the main menu 
+        /// Show the options for task
         /// </summary>
-        /// <returns>Returns option indicated by user</returns>
+        /// <returns>Returns option selected by user</returns>
          int ShowMainMenu()
         {
             Console.WriteLine("----------------------------------------");
@@ -35,7 +32,7 @@
             Console.WriteLine("3. Tareas pendientes");
             Console.WriteLine("4. Salir");
 
-            // Read line
+            
             string Readline = Console.ReadLine();
             return Convert.ToInt32(Readline);
         }
@@ -44,11 +41,12 @@
         {
             try
             {
-                //show current task
+                Console.WriteLine("ingrese el numero de la tarea a rermover: ");
                 ShowMenuTaskList();
 
                 string line = Console.ReadLine();
-                // Remove one position
+
+                // Remove one position becasuse the array starts in 0
                 int indexToRemove = Convert.ToInt32(line) - 1;
 
                 if (indexToRemove > (Tasklist.Count - 1) || indexToRemove < 0)
